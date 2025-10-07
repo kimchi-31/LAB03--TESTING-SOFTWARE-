@@ -13,7 +13,7 @@ class LoginTest(unittest.TestCase):
         options.use_chromium = True
         service = Service()
         self.driver = webdriver.Edge(service=service, options=options)
-        self.driver.get("http://localhost:8000/login.html")
+        self.driver.get("http://127.0.0.1:5500/test/login.html")
         self.driver.maximize_window()
 
     def tearDown(self):
