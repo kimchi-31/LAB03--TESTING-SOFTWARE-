@@ -39,15 +39,29 @@ class LoginTest(unittest.TestCase):
         self.driver.find_element(By.NAME, "pass").send_keys("sai_mat_khau")
         self.driver.find_element(By.CLASS_NAME, "login100-form-btn").click()
         time.sleep(1)
+
+        try:
+            error = self.driver.find_element(By.CLASS_NAME, "error-message")
+            print("❌ Thông báo lỗi:", error.text)
+        except:
+            print("❌ Không tìm thấy thông báo sai mật khẩu")
+
         self.driver.save_screenshot("screenshots/wrong_password.png")
-        print("❌ Sai mật khẩu → đã chụp màn hình")
+        print("✅ Đã chụp màn hình lỗi sai mật khẩu")
 
     def test_login_empty_fields(self):
         print("📍 Đang chạy: test_login_empty_fields")
         self.driver.find_element(By.CLASS_NAME, "login100-form-btn").click()
         time.sleep(1)
+
+        try:
+            alert = self.driver.find_element(By.CLASS_NAME, "validation-message")
+            print("⚠️ Thông báo hiển thị:", alert.text)
+        except:
+            print("❌ Không tìm thấy thông báo yêu cầu nhập")
+
         self.driver.save_screenshot("screenshots/empty_fields.png")
-        print("⚠️ Bỏ trống trường → đã chụp màn hình")
+        print("✅ Đã chụp màn hình cảnh báo bỏ trống")
 
     def test_forgot_password_link(self):
         print("📍 Đang chạy: test_forgot_password_link")
@@ -76,8 +90,17 @@ class LoginTest(unittest.TestCase):
         print("📍 Đang chạy: test_social_login_buttons")
         socials = self.driver.find_elements(By.CLASS_NAME, "login100-social-item")
         self.assertEqual(len(socials), 3)
+
+        for i, btn in enumerate(socials):
+            try:
+                btn.click()
+                print(f"🌐 Đã click nút mạng xã hội thứ {i+1}")
+                time.sleep(1)
+            except Exception as e:
+                print(f"❌ Không click được nút thứ {i+1}: {e}")
+
         self.driver.save_screenshot("screenshots/social_buttons.png")
-        print("🌐 Đã chụp màn hình các nút social login")
+        print("✅ Đã chụp màn hình các nút social login")
 
 if __name__ == "__main__":
     unittest.main()
