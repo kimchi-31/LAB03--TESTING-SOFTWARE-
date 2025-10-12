@@ -1,42 +1,54 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="vi">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Login Page</title>
+  <title>Đăng nhập</title>
   <link rel="stylesheet" href="style.css" />
+  <style>
+    .message-box {
+      display: none;
+      background-color: #ffe6e6;
+      color: #cc0000;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #cc0000;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+  </style>
 </head>
 <body>
   <div class="login-container">
     <form class="login100-form">
-      <h2>Login</h2>
+      <h2>Đăng nhập</h2>
 
       <input type="text" name="username" placeholder="Email" />
-      <input type="password" name="pass" placeholder="Password" />
+      <input type="password" name="pass" placeholder="Mật khẩu" />
 
       <!-- Thông báo lỗi -->
-      <div class="validation-message" style="color:red; display:none;">
-        Vui lòng nhập đầy đủ thông tin.
+      <div class="message-box validation-message">
+        ⚠ Vui lòng nhập đầy đủ thông tin.
       </div>
-      <div class="error-message" style="color:red; display:none;">
-        Sai mật khẩu. Vui lòng thử lại.
+      <div class="message-box error-message">
+        ❌ Sai mật khẩu. Vui lòng thử lại.
       </div>
 
-      <button type="button" class="login100-form-btn" onclick="handleLogin()">Login</button>
+      <button type="button" class="login100-form-btn" onclick="handleLogin()">Đăng nhập</button>
 
       <div class="extra-links">
-        <a href="forgot.html">Forgot password?</a>
-        <a href="signup.html" id="sign_up_link">Sign Up</a>
+        <a href="forgot.html">Quên mật khẩu?</a>
+        <a href="signup.html" id="sign_up_link">Đăng ký</a>
       </div>
 
       <div class="social-login">
-        <a href="#" class="login100-social-item" onclick="alert('Login with Facebook')">
+        <a href="#" class="login100-social-item" onclick="showSocialAlert('Facebook')">
           <img src="images/facebook.png" alt="Facebook" />
         </a>
-        <a href="#" class="login100-social-item" onclick="alert('Login with Twitter')">
+        <a href="#" class="login100-social-item" onclick="showSocialAlert('Twitter')">
           <img src="images/twitter.png" alt="Twitter" />
         </a>
-        <a href="#" class="login100-social-item" onclick="alert('Login with Google')">
+        <a href="#" class="login100-social-item" onclick="showSocialAlert('Google')">
           <img src="images/google.png" alt="Google" />
         </a>
       </div>
@@ -63,6 +75,10 @@
       } else {
         errorMsg.style.display = 'block';
       }
+    }
+
+    function showSocialAlert(platform) {
+      alert(`Login with ${platform}`);
     }
   </script>
 </body>

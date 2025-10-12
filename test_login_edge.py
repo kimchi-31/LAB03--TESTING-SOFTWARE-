@@ -94,10 +94,14 @@ class LoginTest(unittest.TestCase):
         for i, btn in enumerate(socials):
             try:
                 btn.click()
-                print(f"🌐 Đã click nút mạng xã hội thứ {i+1}")
+                WebDriverWait(self.driver, 3).until(EC.alert_is_present())
+                alert = self.driver.switch_to.alert
+                print(f"🌐 Alert hiển thị: {alert.text}")
+                alert.accept()
+                print(f"✅ Đã xử lý alert của nút mạng xã hội thứ {i+1}")
                 time.sleep(1)
             except Exception as e:
-                print(f"❌ Không click được nút thứ {i+1}: {e}")
+                print(f"❌ Không xử lý được alert của nút thứ {i+1}: {e}")
 
         self.driver.save_screenshot("screenshots/social_buttons.png")
         print("✅ Đã chụp màn hình các nút social login")
