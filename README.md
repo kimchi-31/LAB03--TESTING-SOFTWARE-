@@ -65,10 +65,10 @@ python test_login_edge.py
 
 - test_login_success: Kiểm tra đăng nhập với tài khoản hợp lệ. Sau khi đăng nhập, kiểm tra URL và lưu ảnh chụp màn hình thành công.
 - test_login_wrong_password: Kiểm tra đăng nhập với mật khẩu sai. Sau khi nhập sai mật khẩu, hệ thống hiển thị lỗi và lưu ảnh chụp màn hình.
-- test_login_empty_fields: Kiểm tra khi bỏ trống cả username và password. Nhấn nút đăng nhập và chụp ảnh màn hình cảnh báo.
+- test_login_empty_fields: Kiểm tra khi bỏ trống cả username và password. Nhấn nút đăng nhập và chụp ảnh màn hình cảnh báo, hiển thị thông báo yêu cầu nhập
 - test_forgot_password_link: Kiểm tra liên kết “Forgot password?”. Click vào liên kết và kiểm tra URL chuyển hướng, đồng thời lưu ảnh chụp màn hình.
 - test_sign_up_link: Kiểm tra liên kết “Sign Up”. Cuộn tới phần tử, click và kiểm tra URL sau khi chuyển hướng. Nếu không tìm thấy phần tử, lưu ảnh lỗi.
-- test_social_login_buttons: Kiểm tra sự tồn tại của 3 nút đăng nhập mạng xã hội (Facebook, Twitter, Google). Xác nhận số lượng và lưu ảnh chụp màn hình.
+- test_social_login_buttons: Kiểm tra sự tồn tại của 3 nút đăng nhập mạng xã hội (Facebook, Twitter, Google). Xác nhận số lượng, kiểm tra xem click được không và lưu ảnh chụp màn hình.
 
 ---
 
