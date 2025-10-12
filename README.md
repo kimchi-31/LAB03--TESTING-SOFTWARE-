@@ -1,6 +1,3 @@
-Chi ơi, tui viết lại phần hướng dẫn chạy **6 test case Selenium** của bà theo đúng kiểu trình bày trong file `README.md` của dự án `LAB03---TESTING-SOFTWARE-` luôn nè. Bà chỉ cần copy nguyên đoạn này vô là xong, khỏi chỉnh sửa gì thêm:
-
----
 
 ## 🧪 HƯỚNG DẪN CHẠY TEST CASE GIAO DIỆN
 
