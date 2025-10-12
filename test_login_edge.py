@@ -3,6 +3,8 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.edge.service import Service
 from selenium.webdriver.edge.options import Options
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import time
 import os
 
@@ -57,15 +59,15 @@ class LoginTest(unittest.TestCase):
 
     def test_sign_up_link(self):
         print("📍 Đang chạy: test_sign_up_link")
-        time.sleep(1)
         try:
-            element = self.driver.find_element(By.XPATH, "//a[text()='Sign Up']")
+            wait = WebDriverWait(self.driver, 10)
+            element = wait.until(EC.element_to_be_clickable((By.ID, "sign_up_link")))
             self.driver.execute_script("arguments[0].scrollIntoView();", element)
             element.click()
             time.sleep(1)
             print("📍 URL sau click:", self.driver.current_url)
             self.driver.save_screenshot("screenshots/sign_up.png")
-            print("📝 Đã click link đăng ký")
+            print("📝 Đã click link đăng ký thành công")
         except Exception as e:
             print("❌ Không tìm thấy phần tử Sign Up:", e)
             self.driver.save_screenshot("screenshots/sign_up_error.png")
