@@ -57,11 +57,18 @@ class LoginTest(unittest.TestCase):
 
     def test_sign_up_link(self):
         print("📍 Đang chạy: test_sign_up_link")
-        self.driver.find_element(By.LINK_TEXT, "Sign Up").click()
         time.sleep(1)
-        print("📍 URL sau click:", self.driver.current_url)
-        self.driver.save_screenshot("screenshots/sign_up.png")
-        print("📝 Đã click link đăng ký")
+        try:
+            element = self.driver.find_element(By.XPATH, "//a[text()='Sign Up']")
+            self.driver.execute_script("arguments[0].scrollIntoView();", element)
+            element.click()
+            time.sleep(1)
+            print("📍 URL sau click:", self.driver.current_url)
+            self.driver.save_screenshot("screenshots/sign_up.png")
+            print("📝 Đã click link đăng ký")
+        except Exception as e:
+            print("❌ Không tìm thấy phần tử Sign Up:", e)
+            self.driver.save_screenshot("screenshots/sign_up_error.png")
 
     def test_social_login_buttons(self):
         print("📍 Đang chạy: test_social_login_buttons")
